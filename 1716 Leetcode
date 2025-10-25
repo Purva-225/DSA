@@ -1,0 +1,18 @@
+//1716 leetcode problem 
+//que:- To Calculate Money In Leetcode Bank.
+
+class Solution {
+public:
+    int totalMoney(int n) {
+        int a = 1; 
+        int d = 1;
+        int sum = 0;
+        while(n>0){
+            int days = std::min(n,7);
+            sum += ((days*(2 * a +(days-1)* d)) /2);
+            a += 1;
+            n -= days;
+        }
+        return sum;
+    }
+};
