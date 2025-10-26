@@ -1,0 +1,10 @@
+class Solution {
+public:
+    long long removeZeros(long long n) {
+        string s = to_string(n), t = "";
+        for (auto X : s) {
+            if (X != '0') t.push_back(X);
+        }
+        return stoll(t);
+    }
+};
