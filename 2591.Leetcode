@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long maxKidsWithEight(long long money, long long children) {
+    if (money < children) return -1;               // must give at least $1 each
+    if (children == 1 && money == 4) return -1;    // single child cannot receive $4
+
+    long long k = min(children, (money - children) / 7); // each $8 child costs 7 extra over $1
+
+    // If we assigned all children $8 but there's leftover money, free one child to absorb it.
+    if (k == children && money != 8 * k) --k;
+
+    // Avoid the leftover-$4 single-child trap
+    if (children - k == 1 && money - 8 * k == 4) --k;
+
+    return max(0LL, k);
+}
