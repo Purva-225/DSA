@@ -1,0 +1,36 @@
+#Maximum Area od sq hole in grid
+
+class Solution {
+public:
+    int maximizeSquareHoleArea(int n, int m, vector<int>& hBars, vector<int>& vBars) {
+
+         sort(begin(hBars),end(hBars));
+         sort(begin( vBars ),end( vBars));
+
+         int maxConsicativeHbar = 1;
+         int maxConsicativeVbar = 1;
+
+           int  currConsicativeHbar = 1;
+        for(int i=1; i < hBars.size(); i++){
+            if(hBars[i] - hBars[i-1] == 1){
+                currConsicativeHbar++;
+            }else{
+                currConsicativeHbar = 1;
+            }
+            maxConsicativeHbar = max(maxConsicativeHbar,currConsicativeHbar);
+        }
+           int  currConsicativeVbar = 1;
+        for(int i = 1; i< vBars.size(); i++){
+            if(vBars[i] - vBars[i-1]== 1){
+                currConsicativeVbar++;
+            }else{
+                currConsicativeVbar = 1;
+            }
+             maxConsicativeVbar = max(maxConsicativeVbar,currConsicativeVbar);
+        }
+        int side = min( maxConsicativeHbar, maxConsicativeVbar)+ 1;
+        return side*side;
+
+        
+    }
+};
