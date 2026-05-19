@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int getCommon(vector<int>& nums1, vector<int>& nums2) {
+       int minivalue = INT_MAX;
+        int left = 0; int right = 0;
+
+       while(left < nums1.size() && right < nums2.size()){
+            if(nums1[left] == nums2[right]){
+               if(nums1[left] < minivalue){
+                    minivalue = nums1[left]; 
+               }
+               left++; right++;  
+                   }else if(nums1[left] < nums2[right]){
+                    left++;
+                    } else{
+                   right++;
+            }
+        }
+          return minivalue == INT_MAX ? -1 : minivalue;
+    }
+};
