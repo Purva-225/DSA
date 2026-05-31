@@ -23,3 +23,65 @@ if (freq[i] > 1) { A = i;
     return {A, B}; 
   }
 };
+
+// Now for better solution: as here we will take the hash array so initially will do "hash [n+1] = {0} "
+here we done with equal to 0 just because we are menstioning every element to 0 at the initial point. then will ittrate it from 0 to n, thne go to the next number by hash[a[i]]++; 
+then we will be needing the repeating as -1, also the missing as -1; 
+then will ittrate for missing and repating which will from [1 to n] and will check for repating if it will be twice its our repating and if any number gets the allocation of 0 then that perticular number is missing.
+also will check if repeating and missing if they are'nt equal to -1 then will break, and will return reapiting and missing. SO time complexity will be O(2n) and SC will be O(n0 due to hash. 
+
+class Solution {
+  public:
+    vector<int> findTwoElement(vector<int>& arr) {
+        // code here
+        int n = arr.size();
+        int hash[n+1] = {0}; 
+          for(int i =0; i<n; i++){
+           hash[arr[i]]++;
+        }
+        
+        int repeating = -1; 
+        int missing = -1; 
+        
+        for(int i = 1; i<=n; i++){
+            if(hash[i] == 2) repeating = i; 
+        else if(hash[i] == 0) missing = i; 
+        
+        if(repeating != -1 && missing != -1){
+            break;
+        } 
+      }
+         return {repeating , missing}; 
+    }
+};
+
+// FOR OPTIMAL ONE 
+
+// INTEGERS GET OVERFLOW SO WE ARE TYPECASTING IT AS (LONG LONG)
+
+class Solution {
+  public:
+    vector<int> findTwoElement(vector<int>& arr) {
+       
+       /* 1] S - SN             (x-y)
+          2] S2 - S2N */ 
+          
+        int n = arr.size();
+        long long SN = (1LL * n * (n + 1)) / 2;
+        long long S2N = (1LL * n * (n + 1) * (2LL * n + 1)) / 6;
+      // long long SN = (n * (n+1))/2; // ye pata tha 
+      // long long S2N = (n * (n+1) * (2*n+1))/6; // same ye bhi pata tha 
+      
+       long long S = 0, S2 = 0; 
+       for(int i =0; i<n; i++){
+           S += arr[i]; 
+           S2 += (long long) arr[i] * (long long) arr[i]; // no overflow
+       }
+       long long First = S - SN; 
+       long long Second = S2 - S2N;
+       Second = Second/First; 
+       long long X = (First+Second)/2; 
+       long long Y = (X - First); 
+       return {(int)X, (int)Y}; 
+    }
+};
