@@ -1,0 +1,19 @@
+// BRUTE APPROACH 
+class Solution {
+  public:
+    int inversionCount(vector<int> &arr) {
+        //In this Problem Our task Is to find the Count pairs where the left element should be greater than right element
+          int n= arr.size(); 
+          long long  cnt = 0; 
+          for(int i =0; i<n-1; i++){
+        
+              for(int j =i+1; j<n; j++){
+                  if(arr[i] > arr[j]){
+                      cnt+=1; 
+                  }
+              }
+          }
+          return cnt; 
+    }
+};
+
