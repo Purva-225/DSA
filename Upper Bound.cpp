@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int getLowBound(int arr[], int n, int target){
+int getUpperBound(int arr[], int n, int target){
     int st = 0; 
     int end = n-1; 
     int ans = -1; 
@@ -28,6 +28,6 @@ int getLowBound(int arr[], int n, int target){
 int main(){
     int arr[] = {10,25,30,40,55,60,70,80};
     int target = 25;
-    int ans = getLowBound(arr,8,target);
+    int ans = getUpperBound(arr,8,target);
     cout<<"ans: "<< ans<<endl; 
 }
