@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+
+int BinarySearch(int n){
+    int st =0; 
+    int end = n; 
+    int ans = -1; 
+
+    int mid = st + (end - st)/2;
+
+    while(st <= end){
+        long long sq = 1LL* mid * mid;
+        if(sq == n){
+        return mid;
+    }else if(sq <= n){
+        ans = mid; 
+        st = mid+1;
+    }else{
+        end = mid - 1; 
+    }
+     mid = st +(end - st)/2; 
+    }
+    return ans;
+}
+double  LargePrecision(int n, int preicison, int temp){
+     double factor = 1; 
+     double ans = temp; 
+
+     for(double i = 0; i<preicison; i++){
+        factor = factor/10; 
+
+        for(double j = ans; j*j<n; j= j+factor){
+            ans = j; 
+        }
+     }
+     return ans; 
+}
+int main(){
+    int n; 
+    cout << "Enter a number:"<<endl;
+    cin>>n; 
+
+    int temp = BinarySearch(n);
+    cout<< "ans is: "<<LargePrecision(n,4, temp); 
+
+    return 0; 
+
+}
