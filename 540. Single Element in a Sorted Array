@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& A) {
+          int n = A.size();
+        // monotonic: duplicates, eliminate one of the half. 
+        // what we have to return: the element that appeares only once return that 
+        // what if the condition goes left/right: if high = mid - 1 hai toh vo side sorted hai
+        //  what we have to solve: solve the duplicate array where only 1 single element is non    dup that we have to return. 
+       //  what is search space : entire array
+       //  what if condition is true: is arr[mid] == arr[high] skip it and find for unique one 
+       //  what is mid: low + (high - low)/2
+
+       int low = 0; int high = n-1;  int mid = 0; 
+       while(low < high){
+        mid = low + (high - low)/2; 
+
+        if(mid %2 == 1){
+            mid--;
+        }
+        if(A[mid] == A[mid+1]){
+                low = mid + 2; // if PAIR IS CORRECT?  
+            }else{
+                high = mid; 
+            }
+       }
+       return A[low]; 
+    }
+};
