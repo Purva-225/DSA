@@ -1,0 +1,33 @@
+long long Capacity(vector<int>& weights, int capacity){   // if capacity is mid, how many days required?
+    int n = weights.size();
+    int currentLoad = 0; 
+    int reqDays = 1; // starting of day
+    for(int i = 0; i< n; i++){
+        if(currentLoad + weights[i] <= capacity){
+             currentLoad += weights[i];  
+        }else{
+           reqDays++; 
+           currentLoad = weights[i];  
+        }
+    }
+    return reqDays;  
+}
+class Solution {
+public:
+    int shipWithinDays(vector<int>& weights, int days) {
+       int low = *max_element(weights.begin(), weights.end());
+       int high = accumulate(weights.begin(), weights.end(), 0);
+       int ans = 0; 
+       
+        while(low <= high){
+            int mid = low + (high - low)/2; 
+            if(Capacity(weights,mid) <= days){
+             ans = mid; 
+             high = mid - 1;  
+            }else{
+                low = mid + 1;
+            }
+        }
+        return ans; 
+    }
+};
