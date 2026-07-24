@@ -1,44 +1,59 @@
-# DSA
-int gcd(int a, int b){
-    if(a==0){
-        return b;
-    }
-    if(b==0){
-        return b;
-    }
-    if(b == 0){
-        return a;
-    }
-    b = b%a;
-    return gcd(b,a);
-}
+# 🚀 LeetCode Daily Solutions
 
-int main() {
-	// your code goes here
-	int t;
-	cin>>t;
-	while(t--){
-	    int n;
-	    cin>>n;
-	    map< int,vector<int>> m;
-	    for(int i = 1; i<=n; i++){
-	        int g = gcd(i,n);
-	        m[g].push_back(i);
-	    }
-	    vector<vector<int>> v;
-	    for(auto i : m){
-	        v.push_back(i.second);
-	    }
-	    int nv = v.size();
-	    for(int i = nv-1;i>=0;i--){
-	        sort(v[i].begin(),v[i].end());
-	        
-	        for(auto j:v[i]){
-	            cout<<j<<" ";
-	        }
-	    }
-	    cout<<"\n";
-	}
-   
-}
-        
+Welcome to my **LeetCode Daily Solutions** repository!
+
+This repository contains my daily solutions to LeetCode problems that I solve as part of my Data Structures and Algorithms (DSA) journey. The main goal of this repository is to improve my problem-solving skills, strengthen my understanding of algorithms, and maintain consistency.
+
+## 📌 About
+
+- 💻 Daily LeetCode problem solutions
+- 🧠 Focus on understanding the approach before coding
+- 🔍 Optimized solutions with clean implementation
+- 📈 Tracking my consistency and progress in DSA
+
+## 🛠️ Language Used
+
+- **C++**
+
+## 📂 Repository Structure
+
+```
+📦 LeetCode-Daily
+ ┣ 📂 Arrays
+ ┣ 📂 Binary Search
+ ┣ 📂 Dynamic Programming
+ ┣ 📂 Graphs
+ ┣ 📂 Trees
+ ┣ 📂 Linked List
+ ┣ 📂 Greedy
+ ┣ 📂 Strings
+ ┗ 📂 ...
+```
+
+Each solution includes:
+- Problem Name
+- LeetCode Problem Number
+- C++ Solution
+- Optimized Approach (where applicable)
+
+---
+
+## 🎯 Goal
+
+- Solve LeetCode problems consistently.
+- Strengthen DSA concepts.
+- Prepare for coding interviews and competitive programming.
+- Build strong problem-solving skills through regular practice.
+
+---
+
+## 📈 Progress
+
+I regularly update this repository with new solutions as I continue my LeetCode journey.
+
+---
+
+## 🤝 Connect with Me
+
+- GitHub: **https://github.com/Purva-225**
+- LinkedIn: **www.linkedin.com/in/purva-nigade-9b08a235a**
