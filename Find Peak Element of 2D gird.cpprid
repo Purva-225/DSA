@@ -1,0 +1,39 @@
+int IdxOfdPeak(vector<vector<int>>& mat, int rows, int cols, int col){
+       int maxValue = -1; 
+       int idx = -1; 
+       for(int i =0; i <rows; i++){
+        if(mat[i][col] > maxValue){
+           maxValue = mat[i][col]; 
+            idx = i; 
+        }
+       }
+       return idx; 
+}
+
+class Solution {
+public:
+    vector<int> findPeakGrid(vector<vector<int>>& mat) {
+          int rows = mat.size(); 
+          int cols = mat[0].size(); 
+           int low = 0; 
+           int high = cols-1; 
+
+          while(low <= high){
+            int mid = low + (high - low)/2; 
+            int CurrentRow = IdxOfdPeak(mat,rows,cols,mid);
+
+            int left = mid-1 >= 0 ? mat[CurrentRow][mid-1] : -1; 
+            int right = mid + 1 < cols? mat[CurrentRow][mid+1]: -1; 
+
+              if(mat[CurrentRow][mid] > left && mat[CurrentRow][mid] > right){
+                    return {CurrentRow,mid};
+              }
+              else if (mat[CurrentRow][mid] < left) {
+                high = mid - 1;
+             }else {
+               low = mid + 1;
+            }
+        }
+         return {-1,-1};
+    }
+};
