@@ -1,0 +1,35 @@
+class Solution {
+public: 
+        int val(char ch){
+            switch(ch){
+                case 'I': return 1; 
+                case 'V': return 5; 
+                case 'X': return 10; 
+                case 'L': return 50; 
+                case 'C': return 100; 
+                case 'D': return 500; 
+                case 'M': return 1000; 
+            }
+            return 0; 
+    }
+    int romanToInt(string s) {
+        int ans = 0;
+        for(int i =0; i<s.size()-1; i++){
+            int CurrentValue = val(s[i]);
+            int NextValue = val(s[i+1]);
+            if(CurrentValue < NextValue) 
+             ans -= CurrentValue; 
+           else
+            ans += CurrentValue; 
+        }
+       ans += val(s.back());
+         return ans; 
+    }
+};
+// we have to convert roman numerals to int 
+        // if current value is smaller than the next value then subtract it if not then add it. 
+        /* data : Roman Num 
+        Traverse: left to right
+        condition: if(Current < current+1) Curr--; 
+        if(current > current+)curr++; 
+        return: current; */ 
