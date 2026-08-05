@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+       int CurrentPosi = 0; 
+       int sign = 1; 
+       long long numb = 0; 
+       int len = s.size();
+      while(CurrentPosi < len && s[CurrentPosi] == ' '){
+        CurrentPosi++; 
+      }
+        if(CurrentPosi <len && s[CurrentPosi] == '+'){
+            sign = 1; 
+            CurrentPosi++;
+        }else if(CurrentPosi <len && s[CurrentPosi] == '-'){
+            sign = -1; 
+            CurrentPosi++; 
+        }
+         while (CurrentPosi < len && isdigit(s[CurrentPosi])){
+            numb = numb * 10 + (s[CurrentPosi] - '0');
+
+            if(sign == 1 && numb > INT_MAX)
+              return INT_MAX; 
+            if(sign == -1 && -numb < INT_MIN)
+            return INT_MIN;
+            CurrentPosi++;
+        }
+        return sign*numb;  
+    }
+};
