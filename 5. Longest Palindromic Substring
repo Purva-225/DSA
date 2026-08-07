@@ -1,0 +1,39 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n = s.length(); 
+     
+       int Currentlen = 0; 
+       int maxLen = 1; 
+      
+        string ans = s.substr(0,1); 
+      for(int i = 0; i<n; i++){
+        for(int j = i; j<n; j++){
+             int st = i; 
+            int end = j;      
+         bool isPalindrome = true; 
+
+           while(st < end){
+            if(s[st] != s[end]){
+                isPalindrome = false; 
+                    break; 
+            }
+              st++; 
+              end--; 
+           }
+           if(isPalindrome){
+             Currentlen = j- i +1; 
+          
+              if(Currentlen > maxLen){
+                maxLen = Currentlen;
+                ans = s.substr(i,Currentlen);  
+              }
+           }
+         }
+      }
+      return ans; 
+    }
+};
+
+// line 13 = substr mili [ ababac = aba st = a and end = a at [2] idx]
+// line 22 =  if it is palindrome then furthure
